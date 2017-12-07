@@ -112,6 +112,7 @@ func (t *Node) Height() float64 {
 	}
 	return 1 + math.Max(float64(t.Left.Height()), float64(t.Right.Height()))
 }
+
 func (t *Node) String() string {
 	height := t.Height()
 	var currentNodes, nextNodes []*Node
