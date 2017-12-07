@@ -31,6 +31,57 @@ func (t *Node) Find(val int) *Node {
 		return t
 	}
 }
+
+func (t *Node) FindMax() *Node {
+	if t == nil {
+		return nil
+	}
+	if t.Right != nil {
+		return t.Right.FindMax()
+	} else {
+		return t
+	}
+}
+
+func (t *Node) FindMin() *Node {
+	if t == nil {
+		return nil
+	}
+	if t.Left != nil {
+		return t.Left.FindMin()
+	} else {
+		return t
+	}
+}
+
+func (t *Node) Del(val int) *Node {
+
+	if t == nil {
+		return t
+	}
+	if t.Val == val {
+		if t.Right == nil && t.Left == nil {
+			return nil
+		}
+		if t.Right == nil {
+			return t.Left
+		} else if t.Left == nil {
+			return t.Right
+		} else {
+			tmp := t.Left.Right
+			t.Left.Right = t.Right
+			t.Left.Right.FindMin().Left = tmp
+			return t.Left
+		}
+	} else if t.Val > val {
+		t.Left = t.Left.Del(val)
+		return t
+	} else {
+		t.Right = t.Right.Del(val)
+		return t
+	}
+}
+
 func (t *Node) Insert(val int) {
 	if val > t.Val {
 		if t.Right == nil {
@@ -82,6 +133,9 @@ func (t *Node) String() string {
 				isAllEmpty = false
 			} else {
 				buf.WriteString(" ")
+				for j := 0; float64(j) < math.Pow(float64(2), float64(height)) / float64(len(currentNodes)); j++ {
+					buf.WriteString("    ")
+				}
 				nextNodes = append(nextNodes, nil)
 				nextNodes = append(nextNodes, nil)
 			}
