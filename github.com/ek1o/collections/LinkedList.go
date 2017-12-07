@@ -79,8 +79,22 @@ func (h *Node) DelAll(val int) (count int, header *Node) {
 
 func (h *Node) Insert(val int, pos int) (bool, *Node){
 	cP := h
-	for i := 0; i <= pos && cP != nil; i++ {
+	len := 0
+	if pos == 0 {
+		new := &Node{h.val, h.next, h}
+		h.val = val
+		h.next = new
+		if new.next != nil {
+			new.pre = new
+		}
+		return true, h
+	}
+	for len < pos - 1 && cP != nil {
 		cP = cP.next
+		len++
+	}
+	if cP == nil {
+		return false, h
 	}
 	new := &Node{val, cP.next, cP}
 	if cP.next != nil {
