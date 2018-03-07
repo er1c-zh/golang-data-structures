@@ -2,19 +2,26 @@ package main
 
 import (
 	"fmt"
-	"github.com/ek1o/collections/AVL"
+	"github.com/ek1o/collections/Heap"
 	"math/rand"
 )
 
 func main() {
-	root := AVL.InitAVL(9)
+	root := Heap.InitHeap(15)
 	for i := 0; i < 15; i++ {
-		fmt.Println("===")
-		tmp := rand.Intn(100)
+		//fmt.Println("===")
+		tmp := -rand.Intn(1000)
 		fmt.Println(tmp)
-		root = root.Insert(tmp)
-		fmt.Println(root)
+		root.Insert(tmp)
+		//isSuccess := root.Insert(tmp)
+		//fmt.Println(isSuccess)
 	}
-	fmt.Println(root.InOrder())
+
+	fmt.Println(root)
+
+	for i := 0; i < 15; i++ {
+		fmt.Println(root.PopMin())
+	}
+	//fmt.Println(root)
 }
 
