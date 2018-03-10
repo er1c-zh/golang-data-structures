@@ -2,26 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/ek1o/collections/Heap"
+	"github.com/ek1o/algorithm/sort"
 	"math/rand"
 )
 
 func main() {
-	root := Heap.InitHeap(15)
-	for i := 0; i < 15; i++ {
-		//fmt.Println("===")
-		tmp := -rand.Intn(1000)
-		fmt.Println(tmp)
-		root.Insert(tmp)
-		//isSuccess := root.Insert(tmp)
-		//fmt.Println(isSuccess)
+	size := 400
+	foo := make([]int, size)
+	for i := 0; i < size; i++ {
+		foo[i] = rand.Intn(size)
 	}
-
-	fmt.Println(root)
-
-	for i := 0; i < 15; i++ {
-		fmt.Println(root.PopMin())
-	}
-	//fmt.Println(root)
+	fmt.Println("generate finish")
+	fmt.Println(foo)
+	sort.QuickSort(foo, 0, size - 1)
+	fmt.Println(foo)
+	fmt.Println("sort finish")
+	fmt.Println(size)
 }
 
