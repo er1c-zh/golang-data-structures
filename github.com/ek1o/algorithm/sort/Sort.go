@@ -1,5 +1,9 @@
 package sort
 
+import (
+	"github.com/ek1o/collections/Heap"
+)
+
 func QuickSort(src []int, s int, e int) {
 	if e - s < 1 {
 		return
@@ -41,9 +45,14 @@ func QuickSort(src []int, s int, e int) {
 }
 
 func Heapsort(src []int, s int, e int) {
-
+	heap := Heap.InitHeap(e - s + 1)
+	for i := s; i <= e - s; i++ {
+		heap.Insert(src[i])
+	}
+	for i := s; i <= e - s; i++ {
+		src[i] = heap.PopMin()
+	}
 }
 
 func Mergesort(src []int, s int, e int) {
-
 }

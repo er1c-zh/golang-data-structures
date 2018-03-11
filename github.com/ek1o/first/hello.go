@@ -14,7 +14,7 @@ func main() {
 	}
 	fmt.Println("generate finish")
 	fmt.Println(foo)
-	sort.QuickSort(foo, 0, size - 1)
+	sort.Heapsort(foo, 0, size - 1)
 	fmt.Println(foo)
 	fmt.Println("sort finish")
 	fmt.Println(size)
