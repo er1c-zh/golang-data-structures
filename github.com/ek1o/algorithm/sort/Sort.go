@@ -4,6 +4,18 @@ import (
 	"github.com/ek1o/collections/Heap"
 )
 
+func BubbleSort(src []int, s int, e int) {
+	for i := s ; i <= e ; i++ {
+		for j := i; j <= e; j++ {
+			if src[j] < src[i] {
+				tmp := src[i]
+				src[i] = src[j]
+				src[j] = tmp
+			}
+		}
+	}
+}
+
 func QuickSort(src []int, s int, e int) {
 	if e - s < 1 {
 		return
@@ -44,7 +56,7 @@ func QuickSort(src []int, s int, e int) {
 	QuickSort(src, i + 1, e)
 }
 
-func Heapsort(src []int, s int, e int) {
+func HeapSort(src []int, s int, e int) {
 	heap := Heap.InitHeap(e - s + 1)
 	for i := s; i <= e - s; i++ {
 		heap.Insert(src[i])
@@ -54,5 +66,36 @@ func Heapsort(src []int, s int, e int) {
 	}
 }
 
-func Mergesort(src []int, s int, e int) {
+func MergeSort(src []int, s int, e int) {
+	if e - s < 1 {
+		return
+	}
+	if e - s == 1 {
+		if src[e] < src[s] {
+			tmp := src[e]
+			src[e] = src[s]
+			src[s] = tmp
+		}
+		return
+	}
+
+	mid := (s + e) / 2
+	MergeSort(src, s, mid)
+	MergeSort(src, mid + 1, e)
+	tmp := make([]int, e - s + 1)
+
+	i := s
+	j := mid + 1
+	for k := 0 ; (i <= mid || j <= e) && k <= e - s; k++ {
+		if i <= mid && (j > e || src[i] < src[j]) {
+			tmp[k] = src[i]
+			i++
+		} else {
+			tmp[k] = src[j]
+			j++
+		}
+	}
+	for k := 0; k <= e - s; k++ {
+		src[k + s] = tmp[k]
+	}
 }
