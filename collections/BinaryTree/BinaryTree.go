@@ -2,8 +2,8 @@ package BinaryTree
 
 import (
 	"bytes"
-	"strconv"
 	"math"
+	"strconv"
 )
 
 type Node struct {

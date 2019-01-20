@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/ek1o/algorithm/string"
 	"fmt"
+	"github.com/ek1o/golang-data-structures/algorithm/string"
 )
 
 func main() {

@@ -2,8 +2,8 @@ package AVL
 
 import (
 	"bytes"
-	"strconv"
 	"math"
+	"strconv"
 )
 
 type Node struct {
