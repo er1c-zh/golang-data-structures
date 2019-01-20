@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ek1o/golang-data-structures/algorithm/string"
+	"github.com/EriCZZZZ/golang-data-structures/algorithm/string"
 )
 
 func main() {

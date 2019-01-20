@@ -1,7 +1,7 @@
 package sort
 
 import (
-	"github.com/ek1o/golang-data-structures/collections/Heap"
+	"github.com/EriCZZZZ/golang-data-structures/collections/Heap"
 )
 
 func BubbleSort(src []int, s int, e int) {
